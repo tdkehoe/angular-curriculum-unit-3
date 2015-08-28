@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="BitCoinApp">
+  <head>
+    <meta charset="UTF-8">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js"></script>
+
+    <title>Bitcoin Converter</title>
+
+    <style>
+
+      body {
+        font-size: 18pt;
+        font-family: sans-serif;
+        font-weight: bold;
+      }
+
+      option {
+        font-size: 18pt;
+        font-family: sans-serif;
+      }
+
+
+      .box {
+        border-style: solid;
+        border-width: 1px;
+        border-color: gray;
+        box-sizing: border-box;
+        padding: 10px;
+        margin: 100px;
+        position: absolute;
+      }
+
+
+
+    </style>
+  </head>
+  <body ng-controller="CurrencyController">
+
+    <span class="box">
+
+      <span>
+        <input type="text" name="name" placeholder="1" ng-model="number" size=5 ng-init=1>
+      </span>
+
+      <span>
+        <select ng-model="currency" ng-init="currency='bitcoin'">   <!-- ng-model goes here if ng-repeat isn't used -->
+          <option value="bitcoin" selected>BTC</option>   <!-- ng-value doesn't work here, maybe ng-value only works in ng-repeat? put ng-model here if inside ng-repeat -->
+          <option value="dogecoin">XDG</option>
+          <option value="litecoin">LTC</option>
+        </select>
+      </span>
+
+      <!-- <span ng-show="currency == 'bitcoin'">BTC:</span>
+      <span ng-show="currency == 'dogecoin'">XDG:</span>
+      <span ng-show="currency == 'litecoin'">LTC:</span> -->
+
+      <span>
+        {{(number || 1) * allcoinData[currency].ask | currency}}
+      </span>
+
+    </span>
+
+    <script>
+      angular.module("BitCoinApp", ['firebase']);
+
+      angular.module("BitCoinApp", ['firebase'])
+      .controller('CurrencyController', ['$scope', '$firebaseObject', function($scope, $firebaseObject){
+          var allcoinRef = new Firebase("https://publicdata-cryptocurrency.firebaseio.com");
+          $scope.allcoinData = $firebaseObject(allcoinRef);
+        }
+      ]);
+    </script>
+
+  </body>
+</html>
