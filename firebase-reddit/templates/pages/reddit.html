@@ -1,0 +1,53 @@
+<h1>Cuba's National Parks</h1>
+<form ng-submit="submit()" class='submitPost'>
+  <label for="park">Park: </label><input type="text" name="park" ng-model="post.park" required></label><br>
+  <label for="province">Province: </label><input type="text" name="province" ng-model="post.province" required></label><br>
+  <label for="image">Image URL: </label><input type="text" name="image" ng-model="post.image" required></label><br>
+  <label for="description">Description: </label><input type="text" name="description" ng-model="post.description" required></label><br>
+  <input type="submit" value="Submit Post"></input>
+</form>
+<label>Search <input ng-model="searchText"></label>
+
+<!-- <div id="searchTextResults" width=500 class='results'> -->
+  <div ng-repeat="post in posts | filter: searchText" class="post">
+    <div class="picture"><img ng-src="{{post.image}}" alt="Picture" height=200></div>
+    <div class="postContent">
+      <div class='park'>{{post.park}}</div>
+      <div class='province'>{{post.province}}</div>
+      <div class='description'>{{post.description}}</div>
+      <div class='timestamp'>{{post.timestamp | amCalendar}}</div>
+
+      <span ng-click="showComments = !showComments">
+        <ng-pluralize count="post.comments.length"
+        when="{'0': '',
+               'one': '1 comment',
+               'other': '{} comments',
+               'NaN': ''}">
+        </ng-pluralize><br>
+      </span>
+
+      <!-- <td>at {{post.timestamp | date: 'h:mm a'}}</td> -->
+      <!-- <td><button ng-click="upVote()" ng-init="$storage.posts.count = 0">Up</button><button ng-click="downVote()">Down</button><span>count: {{post.count}}</span></td> -->
+      <span>Likes: {{post.count}}</span></span>
+      <span><button ng-click="post.count = post.count + 1" ng-init="post.count = 0">Up</button>
+      <button ng-click="post.count = post.count - 1">Down</button>
+
+      <span>
+        <form ng-submit="newComment(post)">
+          <input type="text" name="commentText" ng-model="post.comments.commentText">
+          <input type="text" name="commentAuthor" ng-model="post.comments.commentAuthor">
+          <input type="submit" value="Submit Comment"></input>
+        </form>
+      </span>
+
+      <span ng-repeat="comment in post.comments" ng-show="showComments">
+        <span>{{comment.commentText}}</span> <span class='commentAuthor'>--{{comment.commentAuthor}}</span>
+      </span>
+
+      <div>
+          <button ng-click="deletePost(post)">Delete</input>
+      </div>
+
+    </div>
+  </div>
+<!-- </div> -->

@@ -1,0 +1,38 @@
+.results {
+  border: 2px solid gray;
+}
+
+.post {
+  border: 2px solid gray;
+  margin: 10px;
+}
+
+.picture {
+  /*float: left;*/
+}
+
+.title {
+  font-weight: bold;
+  font-size: 16pt
+}
+
+.author {
+  text-align: left;
+  font-style: italic;
+}
+
+.description {
+
+}
+
+.timestamp {
+  font-weight: bold;
+}
+
+.submitPost {
+  font-weight: bold;
+}
+
+.commentAuthor {
+  font-style: italic;
+}
