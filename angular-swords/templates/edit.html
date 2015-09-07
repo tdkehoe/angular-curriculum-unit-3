@@ -1,0 +1,14 @@
+<a ng-href="/#/"><p style="font-style: italic">Return to index route</p></a>
+
+<h1>Edit Sword</h1>
+
+<div>Sword Name: {{editSword.swordName}}</div>
+<div>Sword Owner: {{editSword.swordOwner}}</div>
+
+<form ng-submit="updateSword()" class='upDateSword'>
+  <label for="swordName">Sword Name: </label>
+    <input type="text" name="swordName" ng-model="sword.swordName" required></label><br>
+  <label for="swordOwner">Sword Owner: </label>
+    <input type="text" name="swordOwner" ng-model="sword.swordOwner" required></label><br>
+  <input type="submit" value="Update Sword"></input>
+</form>

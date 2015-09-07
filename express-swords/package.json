@@ -1,0 +1,26 @@
+{
+  "name": "express-angular-swords",
+  "version": "1.0.0",
+  "description": "Express with Angular, and swords",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.13.3",
+    "cors": "^2.7.1",
+    "express": "^4.13.3",
+    "monk": "^1.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:tdkehoe/express-angular-swords.git"
+  },
+  "author": "Thomas David Kehoe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tdkehoe/express-angular-swords/issues"
+  },
+  "homepage": "https://github.com/tdkehoe/express-angular-swords"
+}
